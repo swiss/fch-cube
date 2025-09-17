@@ -9,7 +9,7 @@ The fch-cube maintainers take security issues seriously, and we appreciate your 
 any findings. Please DO NOT disclose potential issues publicly until we've had a chance to fix it.
 
 To report a security issue, please use the GitHub Security Advisory
-["Report a Vulnerability"](https://github.com/jeap-admin-ch/fch-cube/security/advisories/new) feature.
+["Report a Vulnerability"](https://github.com/swiss/fch-cube/security/advisories/new) feature.
 
 The fch-cube maintainers will respond with the next steps for handling your report. After the initial reply, the maintainers
 will keep you informed about progress toward a fix and public announcement. They may also request additional information
@@ -21,5 +21,6 @@ this time. Therefore, we ask that you refrain from including code fixes in your 
 descriptions are welcome.
 
 Report security bugs in third-party modules or dependencies to the person or team maintaining the respective module.
+
 
 Thank you for helping make our project more secure.
