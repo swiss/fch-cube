@@ -59,7 +59,7 @@ var personTriples =
 		rdfTypes: ["http://schema.org/Person"]);
 ```
 
-*Note:* `FCh.Cube.Dimension` will not push the triples triples to an RDF store. This has to be done using `dotnetRdf`.
+*Note:* `FCh.Cube.Dimension` will not push the triples triples to an RDF store. This has to be done using `dotnetRdf`. See https://dotnetrdf.org/docs/3.4.x/user_guide/writing_rdf.html for more information about `dotnetRdf`.
 
 ## FCh.Cube.RawData
 This library supports the creation of observations (https://cube.link/#Observation) building up your cube.
@@ -115,4 +115,4 @@ var rawDataTriples =
 		new List<ObservationDataRow> {});
 ```
 
-*Note:* `FCh.Cube.RawData` will not push the triples triples to an RDF store. This has to be done using `dotnetRdf`.
+*Note:* `FCh.Cube.RawData` will not push the triples triples to an RDF store. This has to be done using `dotnetRdf`. See https://dotnetrdf.org/docs/3.4.x/user_guide/writing_rdf.html for more information about `dotnetRdf`.
