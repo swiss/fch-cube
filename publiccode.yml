@@ -1,0 +1,38 @@
+publiccodeYmlVersion: 0.5.0
+name: fch-cube
+url: https://github.com/swiss/fch-cube/
+softwareVersion: "1.0"
+releaseDate: 2025-11-04
+platforms:
+  - mac
+  - linux
+  - windows
+categories:
+  - data-collection
+developmentStatus: stable
+softwareType: library
+organisation:
+  uri: https://ld.admin.ch/FCh
+  name: Bundeskanzlei
+description:
+  en:
+    localisedName: fch-cube
+    shortDescription: A set of .NET components creating cube.link conform datasets.
+    longDescription: This software consists of two library supporting the creation
+      of "dimensions"and "observations" RDF triples conforming to the cube.link
+      (see https://cube.link/) schema  to support open government data from line
+      of business applications written in .NET.
+    documentation: https://github.com/swiss/fch-cube/blob/main/README.md
+    features:
+      - creating cube.link datasets
+legal:
+  license: MIT
+maintenance:
+  type: internal
+  contacts:
+    - name: IT Services Federal Chancellery
+      email: ikt@admin.ch
+localisation:
+  localisationReady: false
+  availableLanguages:
+    - en
