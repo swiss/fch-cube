@@ -154,7 +154,7 @@ The visualization can be shared or embedded using iFrames.
 <img src="./etc/documentation/images/05_visualize_embed_options.png" alt="Embed Visualization" width="250" />
 
 ## Using HTML / javascript
-Another common case of using the cube data is by displaying it on a website.
+Displaying data on a website is another common usage of cube data.
 Aside of [visualize.admin.ch](https://visualize.admin.ch), this can also be achieved by simply using HTML and javascript.
 
 ### Define a Sparql Query
@@ -187,7 +187,6 @@ This demonstrates the basic structure of such a query.
 * select all the required properties said observations
 
 A more generic template of such a query can thus look like this.
-
 
 ```sparksql
 PREFIX cube: <https://cube.link/>
