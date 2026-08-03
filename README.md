@@ -159,7 +159,7 @@ Aside of [visualize.admin.ch](https://visualize.admin.ch), this can also be achi
 
 ### Define a Sparql Query
 Cube data can be queried using Sparql queries (same as with any RDF data).
-[jasgui](https://lindas.admin.ch/sparql/) is a suitable tool to try out Sparql queries against an endpoint of your choice.
+[LINDAS](https://lindas.admin.ch/sparql/) is a suitable tool to try out Sparql queries against an endpoint of your choice.
 
 Since the cube data is always structured in the same way, the queries to read such data, will also be following a similar pattern. 
 
