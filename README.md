@@ -116,3 +116,123 @@ var rawDataTriples =
 ```
 
 *Note:* `FCh.Cube.RawData` will not push the triples triples to an RDF store. This has to be done using `dotnetRdf`. See https://dotnetrdf.org/docs/3.4.x/user_guide/writing_rdf.html for more information about `dotnetRdf`.
+
+# Visualization
+
+## Using visualize.admin.ch
+The data in "cube-form" can be visualized using [visualize.admin.ch](https://visualize.admin.ch).
+Visualize can read the cube data and offers editors to create all sorts of diagrams, such as tables, bar charts, scatter plots, pie charts, etc.
+
+## How to use visualize.admin.ch
+### Start
+Go to [visualize.admin.ch](https://visualize.admin.ch).
+Users that are logged-in can save their visualizations for further editing later on. 
+
+Start the process by selecting "Start a visualization".
+
+<img src="./etc/documentation/images/01_visualize_create_visualization.png" alt="Start a Visualization" width="300">
+
+
+### Select Data Set
+Search for your data set and select it.
+
+<img src="./etc/documentation/images/02_visualize_selecct_cube.png" alt="Select Cube" width="400" />
+
+### Verify Data
+Verify the selected data and confirm the selection.
+
+<img src="./etc/documentation/images/03_visualize_start_visualization.png" alt="Confirm Selection" width="750" />
+
+### Define Visualization
+In this step, the actual visualization can be customized and diagram types can be chosen.
+
+<img src="./etc/documentation/images/04_visualize_options.png" alt="Configure Visualization" width="750" />
+
+### Share or Embed the Visualization
+The visualization can be shared or embedded using iFrames.
+
+<img src="./etc/documentation/images/05_visualize_embed_options.png" alt="Embed Visualization" width="250" />
+
+## Using HTML / javascript
+Displaying data on a website is another common usage of cube data.
+Aside of [visualize.admin.ch](https://visualize.admin.ch), this can also be achieved by simply using HTML and javascript.
+
+### Define a Sparql Query
+Cube data can be queried using Sparql queries (same as with any RDF data).
+[LINDAS](https://lindas.admin.ch/sparql/) is a suitable tool to try out Sparql queries against an endpoint of your choice.
+
+Since the cube data is always structured in the same way, the queries to read such data, will also be following a similar pattern. 
+
+```sparksql
+PREFIX cube: <https://cube.link/>
+PREFIX schema: <http://schema.org/>
+
+SELECT * WHERE {
+    <https://politics.ld.admin.ch/national-council-election/candidates/2023> cube:observationSet ?obsSet .
+    ?obsSet cube:observation ?obs .
+
+    ?obs <https://politics.ld.admin.ch/national-council-election/candidates/hasCanton> ?canton ;
+         <https://politics.ld.admin.ch/national-council-election/candidates/hasCandidate> ?candidateUri ;
+         <https://politics.ld.admin.ch/national-council-election/candidates/elected> ?elected ;
+         <https://politics.ld.admin.ch/national-council-election/candidates/elected> "true"^^<http://www.w3.org/2001/XMLSchema#boolean> .
+
+    OPTIONAL { ?candidateUri schema:birthDate    ?birth . }
+}
+```
+*Example Sparql Query*
+
+This demonstrates the basic structure of such a query.
+* specify cube base URI
+* select all the cube's observations
+* select all the required properties said observations
+
+A more generic template of such a query can thus look like this.
+
+```sparksql
+PREFIX cube: <https://cube.link/>
+PREFIX schema: <http://schema.org/>
+
+SELECT * WHERE {
+    <YOUR_CUBE_BASE_URI> cube:observationSet ?obsSet .
+    ?obsSet cube:observation ?obs .
+
+    ?obs <DESIRED_PREDICATE_URI_1> ?predicate1 ;
+         <DESIRED_PREDICATE_URI_2> ?predicate2  .
+         [... more if needed...]
+}
+```
+*Generic Sparql Query Pattern for Cubes*
+
+### Use Javascript to Execute Query
+Since Sparql queries are executed as HTTP requests, javascript is sufficient to do so.
+The following code snippet shows, how an HTTP request with a Sparql query against an endpoint can be sent and how the data can be fetched.
+
+```javascript
+const query = '[your sparql query]';
+const endpoint = '[your sparql endpoint]';
+
+//HTTP request to Sparql endpoint
+const response = await fetch(endpoint, {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/sparql-query",
+        Accept: "application/sparql-results+json",
+    },
+    body: query,
+});
+
+const json = await response.json();
+const rows = json.results.bindings;
+
+//Fetching the results
+const result = [];
+
+for (let i = 0; i < rows.length; i++) {
+
+    result.push({
+        property1: rows[i].predicate1?.value,
+        property2: rows[i].predicate2?.value
+    });
+}
+```
+*Simple javascript snippet to execute a Sparql query*
