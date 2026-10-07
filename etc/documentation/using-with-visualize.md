@@ -11,7 +11,7 @@ Users that are logged-in can save their visualizations for further editing later
 
 Start the process by selecting "Start a visualization".
 
-<img src="./etc/documentation/images/01_visualize_create_visualization.png" alt="Start a Visualization" width="300">
+<img src="./images/01_visualize_create_visualization.png" alt="Start a Visualization" width="300">
 
 
 ### Select Data Set
